@@ -18,6 +18,18 @@ class App extends Component {
       "Book Type": "all",
     }
 
+    this.printType = [
+      {
+        value: 'books',
+        label: 'books'
+      },
+      {
+        value: 'magazines',
+        label: 'magazines',
+      }
+    ]
+    
+    
   }
   // componentDidMount() {
   //   const url = "https://www.googleapis.com/auth/books"
@@ -47,7 +59,6 @@ class App extends Component {
   // }
 
   bookSearch(searchvalue) {
-    console.log(searchvalue);
     this.setState({
       search: {searchvalue},
     })
@@ -61,7 +72,7 @@ class App extends Component {
         <SearchBooks
           valueSearch={this.state.search}
           onSearch={searchvalue => this.bookSearch(searchvalue)}
-
+          printType={this.printType}
         />
         <DisplayBookSearch />
       </div>
