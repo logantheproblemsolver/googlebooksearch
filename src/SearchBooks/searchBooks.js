@@ -6,7 +6,7 @@ class SearchBooks extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
+        this.props.onSearch()
     }
 
 

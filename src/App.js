@@ -60,7 +60,8 @@ class App extends Component {
         <h1>Google Book Search</h1>
         <SearchBooks
           valueSearch={this.state.search}
-          bookSearch={searchvalue => this.bookSearch(searchvalue)}
+          onSearch={searchvalue => this.bookSearch(searchvalue)}
+
         />
         <DisplayBookSearch />
       </div>
