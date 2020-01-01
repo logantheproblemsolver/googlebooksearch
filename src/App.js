@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import DisplayBookSearch from './DisplayBookSearch/displayBookSearch';
 import SearchBooks from './SearchBooks/searchBooks';
@@ -11,7 +11,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state= {
+    this.state = {
       search: null,
       books: [],
       "Print Type": "all",
@@ -19,52 +19,52 @@ class App extends Component {
     }
 
   }
-    // componentDidMount() {
-    //   const url = "https://www.googleapis.com/auth/books"
-    //   const params = {
-    //     key: {APIkey}
-    //   }
+  // componentDidMount() {
+  //   const url = "https://www.googleapis.com/auth/books"
+  //   const params = {
+  //     key: {APIkey}
+  //   }
 
-    //   fetch(url)
-    //     .then(res => {
-    //       if(!res.ok) {
-    //         throw new Error('Something went wrong, please try again');
-    //       }
-    //       return res
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       this.setState({
-    //         books: data,
-    //         error: null,
-    //       });
-    //     })
-    //     .catch(err => {
-    //       this.setState({
-    //         error: err.message,
-    //       });
-    //     });
-    // }
+  //   fetch(url)
+  //     .then(res => {
+  //       if(!res.ok) {
+  //         throw new Error('Something went wrong, please try again');
+  //       }
+  //       return res
+  //     })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({
+  //         books: data,
+  //         error: null,
+  //       });
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         error: err.message,
+  //       });
+  //     });
+  // }
 
   bookSearch(searchvalue) {
     console.log(searchvalue);
     this.setState({
-      search: searchvalue,
+      search: {searchvalue},
     })
   }
 
 
   render() {
-  return (
-    <div className="App">
-      <h1>Google Book Search</h1>
-      <SearchBooks
-      valueSearch = {this.state.search} 
-      bookSearch = {searchvalue => this.bookSearch(searchvalue)}
-      />
-      <DisplayBookSearch  />
-    </div>
-  );
+    return (
+      <div className="App">
+        <h1>Google Book Search</h1>
+        <SearchBooks
+          valueSearch={this.state.search}
+          bookSearch={searchvalue => this.bookSearch(searchvalue)}
+        />
+        <DisplayBookSearch />
+      </div>
+    );
   }
 }
 
