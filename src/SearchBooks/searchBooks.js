@@ -7,9 +7,7 @@ class SearchBooks extends Component {
 
     handleChange(c) {
         c.preventDefault();
-        this.props.onSearch(this.textInput.value)
         this.props.typeOfPrint(this.refs.printSelector.value)
-        this.props.typeOfBook(this.refs.bookSelector.value)
 
     }
 
@@ -51,7 +49,7 @@ class SearchBooks extends Component {
                 htmlFor="Print Type">Print Type: </label>
                 <select 
                 id="printType" 
-                onChange={e => this.props.typeOfPrint(e.target.value)} 
+                onChange={(e) => this.handleChange(e)} 
                 ref="printSelector" 
                 defaultValue="all"
                 

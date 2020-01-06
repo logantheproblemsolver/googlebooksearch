@@ -16,8 +16,8 @@ class App extends Component {
     this.state = {
       search: "",
       books: [],
-      printType: null,
-      BookType: null,
+      printType: "",
+      BookType: "",
     }
 
   }
