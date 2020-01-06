@@ -16,8 +16,8 @@ class App extends Component {
     this.state = {
       search: "",
       books: [],
-      printType: "",
-      BookType: "",
+      printType: "all",
+      BookType: "all",
     }
 
   }
@@ -55,6 +55,14 @@ class App extends Component {
       printType: this.state.printType,
       q: this.state.search,
     }
+
+    const options = {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': 'no-cors',
+        "Content-Type": "application/json"
+      }
+    }
     
 
     function formatQueryParams(params) {
@@ -68,7 +76,7 @@ class App extends Component {
     const queryString = formatQueryParams(params)
     const searchURL = url + '?' + queryString;
 
-    fetch(searchURL)
+    fetch(searchURL, options)
       .then(res => {
         if(!res.ok) {
           throw new Error('Something went wrong, please try again');
@@ -106,6 +114,7 @@ class App extends Component {
           valueSearch={this.state.search}
           onSearch={searchvalue => this.bookSearch(searchvalue)}
           PrintType={this.state.printType}
+          BookType={this.state.BookType}
           printType={printType}
           bookType={bookType}
           typeOfPrint={selectedprint => this.typeOfPrint(selectedprint)}

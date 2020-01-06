@@ -49,10 +49,9 @@ class SearchBooks extends Component {
                 htmlFor="Print Type">Print Type: </label>
                 <select 
                 id="printType" 
-                onChange={(e) => this.handleChange(e)} 
+                onChange={(e) => this.typeOfPrint(e.target.value)} 
                 ref="printSelector" 
-                defaultValue="all"
-                
+                value={this.props.PrintType}                
                 >
                     {printOptions}
                 </select>
@@ -63,6 +62,7 @@ class SearchBooks extends Component {
                 name="bookType"
                 ref="bookSelector"
                 onChange={e => this.typeOfBook(e.target.value)}
+                value={this.props.BookType}
                 >
                     {bookOptions}
                 </select>
