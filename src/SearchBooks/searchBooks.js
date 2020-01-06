@@ -8,10 +8,22 @@ class SearchBooks extends Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.onSearch(this.textInput.value)
+        this.props.typeOfPrint(this.refs.printSelector.value)
+        this.props.typeOfBook(this.refs.bookSelector.value)
+        
     }
 
 
     render() {
+
+        const printOptions = this.props.printType
+                .map((type, i) => <option value={type} key={i}>{type}</option>)
+
+
+
+        const bookOptions = this.props.bookType
+                .map((price, i) => <option value={price} key={i}>{price}</option>)
+
         return (
             <div>
                 <form onSubmit={e => this.handleSubmit(e)}>
@@ -31,19 +43,18 @@ class SearchBooks extends Component {
                 <br />
                 <label 
                 htmlFor="Print Type">Print Type: </label>
-                <select 
-                id="printType" 
-                name="printType"
-                options={this.props.printType}
-                >
-                        Select one...
-                    </select>
+                <select id="printType" onChange={this.typeOfPrint} ref="printSelector">
+                    {printOptions}
+                </select>
+                
                 <label htmlFor="Book Type">Book Type: </label>
                 <select 
                 id="bookType" 
                 name="bookType"
+                ref="bookSelector"
+                onChange={this.typeOfBook}
                 >
-                    Select one...
+                    {bookOptions}
                 </select>
                 
                 </form>
