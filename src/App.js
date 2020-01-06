@@ -58,9 +58,10 @@ class App extends Component {
 
     const options = {
       method: 'GET',
-      headers: {
+      header: {
         'Access-Control-Allow-Origin': 'no-cors',
-        "Content-Type": "application/json"
+        "Content-Type": "text/plain",
+
       }
     }
     
@@ -123,7 +124,7 @@ class App extends Component {
 
         />
         <DisplayBookSearch 
-        
+        books = {this.state.books}
         />
       </div>
     );

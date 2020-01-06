@@ -5,7 +5,7 @@ class BookList extends Component {
                 
         return (
             <div className="BookList">
-                {/* <ul>
+                <ul>
                     <li>
                         <h2>{this.props.title}</h2>
                     </li>
@@ -22,7 +22,7 @@ class BookList extends Component {
                         <a href={this.props.link}>Book Link</a>
                     </li>
                 </ul>
-                <p></p> */}
+                <p></p>
             </div>
         )
     }
