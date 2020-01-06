@@ -23,14 +23,16 @@ class App extends Component {
   }
 
     
-  
-  componentDidMount() {
+    fetchAPI() {
     const url = "https://www.googleapis.com/auth/books/"
+
     const params = {
+
       key: {APIkey},
       printType: this.state.PrintType,
       q: this.state.search,
     }
+    
     
     function formatQueryParams(params) {
       const queryItems = Object.keys(params)
