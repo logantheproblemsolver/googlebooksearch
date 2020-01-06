@@ -16,24 +16,46 @@ class App extends Component {
     this.state = {
       search: "",
       books: [],
-      PrintType: [],
-      BookType: [],
+      printType: null,
+      BookType: null,
     }
 
   }
 
     
-    fetchAPI() {
+
+
+  bookSearch = (searchvalue) => {
+    this.setState({
+      search: {searchvalue},
+    })
+  }
+
+  typeOfPrint = (selectedprint) => {
+    console.log(selectedprint)
+    this.setState({
+      PrintType: {selectedprint}
+    })
+  }
+
+  typeOfBook = (selectedprice) => {
+    this.setState({
+      BookType: {selectedprice},
+    })
+  }
+
+  fetchAPI = () => {
+
     const url = "https://www.googleapis.com/auth/books/"
 
     const params = {
 
-      key: {APIkey},
-      printType: this.state.PrintType,
+      key: APIkey,
+      printType: this.state.printType,
       q: this.state.search,
     }
     
-    
+
     function formatQueryParams(params) {
       const queryItems = Object.keys(params)
           .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
@@ -67,23 +89,6 @@ class App extends Component {
       });
   }
 
-  bookSearch(searchvalue) {
-    this.setState({
-      search: {searchvalue},
-    })
-  }
-
-  typeOfPrint(selectedprint) {
-    this.setState({
-      PrintType: {selectedprint}
-    })
-  }
-
-  typeOfBook(selectedprice) {
-    this.setState({
-      BookType: {selectedprice},
-    })
-  }
 
 
   render() {
@@ -99,11 +104,12 @@ class App extends Component {
         <SearchBooks
           valueSearch={this.state.search}
           onSearch={searchvalue => this.bookSearch(searchvalue)}
-          PrintType={this.state.PrintType}
+          PrintType={this.state.printType}
           printType={printType}
           bookType={bookType}
           typeOfPrint={selectedprint => this.typeOfPrint(selectedprint)}
           typeOfBook={selectedprice => this.typeOfBook(selectedprice)}
+          fetchAPI = {this.fetchAPI}
 
         />
         <DisplayBookSearch 

@@ -10,6 +10,7 @@ class SearchBooks extends Component {
         this.props.onSearch(this.textInput.value)
         this.props.typeOfPrint(this.refs.printSelector.value)
         this.props.typeOfBook(this.refs.bookSelector.value)
+        this.props.fetchAPI();
         
     }
 
@@ -43,7 +44,7 @@ class SearchBooks extends Component {
                 <br />
                 <label 
                 htmlFor="Print Type">Print Type: </label>
-                <select id="printType" onChange={this.typeOfPrint} ref="printSelector">
+                <select id="printType" onChange={this.typeOfPrint} ref="printSelector" defaultValue="all">
                     {printOptions}
                 </select>
                 
