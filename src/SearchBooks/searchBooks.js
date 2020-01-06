@@ -5,11 +5,16 @@ import React, {Component} from 'react';
 
 class SearchBooks extends Component {
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleChange(c) {
+        c.preventDefault();
         this.props.onSearch(this.textInput.value)
         this.props.typeOfPrint(this.refs.printSelector.value)
         this.props.typeOfBook(this.refs.bookSelector.value)
+
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
         this.props.fetchAPI();
         
     }
@@ -34,7 +39,7 @@ class SearchBooks extends Component {
                 name="bookSearch" 
                 id="bookSearch" 
                 value={this.valueSearch}
-                ref={(input) => this.textInput = input}
+                onChange={e => this.props.onSearch(e.target.value)}
                 />
                 <button
                 type="submit" 
@@ -44,7 +49,13 @@ class SearchBooks extends Component {
                 <br />
                 <label 
                 htmlFor="Print Type">Print Type: </label>
-                <select id="printType" onChange={this.typeOfPrint} ref="printSelector" defaultValue="all">
+                <select 
+                id="printType" 
+                onChange={e => this.props.typeOfPrint(e.target.value)} 
+                ref="printSelector" 
+                defaultValue="all"
+                
+                >
                     {printOptions}
                 </select>
                 
@@ -53,7 +64,7 @@ class SearchBooks extends Component {
                 id="bookType" 
                 name="bookType"
                 ref="bookSelector"
-                onChange={this.typeOfBook}
+                onChange={e => this.typeOfBook(e.target.value)}
                 >
                     {bookOptions}
                 </select>

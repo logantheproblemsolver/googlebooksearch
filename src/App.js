@@ -27,25 +27,26 @@ class App extends Component {
 
   bookSearch = (searchvalue) => {
     this.setState({
-      search: {searchvalue},
+      search: searchvalue,
     })
   }
 
   typeOfPrint = (selectedprint) => {
     console.log(selectedprint)
     this.setState({
-      PrintType: {selectedprint}
+      PrintType: selectedprint
     })
   }
 
   typeOfBook = (selectedprice) => {
     this.setState({
-      BookType: {selectedprice},
+      BookType: selectedprice,
     })
   }
 
   fetchAPI = () => {
 
+    console.log(this.state)
     const url = "https://www.googleapis.com/auth/books/"
 
     const params = {
